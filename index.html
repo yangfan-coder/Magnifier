@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dmeo</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		#div1 {
+			height: 200px;
+			width: 244.5px;
+			position: relative;
+			cursor: pointer;
+			overflow:hidden;
+			margin: 100px auto 0;
+		}
+		span {
+			height: 100px;
+			width: 100px;
+			background: #000;
+			opacity: 0.5;
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+
+		}
+		#div2 {
+			height: 200px;
+			width: 244.5px;
+			position: 0;
+			background: #000;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+		}
+		#div3 {
+
+			height:300px;
+			width: 300px;
+			border:1px solid #000;
+			position: absolute;
+			left: 50px;
+			top: 200px;
+			overflow: hidden;
+		}
+		#div3  img {
+			position: absolute;
+			left: 0;
+			top: 0
+		}
+	</style>
+</head>
+<script>
+	
+	window.onload = function ()
+	{
+		var oDivs = document.getElementById('div1'),
+			oSpan = oDivs.getElementsByTagName('span')[0],
+			Img2 = document.getElementById('img2'),
+			Div3 = document.getElementById('div3');
+
+
+		oDivs.onmouseover = function ()
+		{
+			oSpan.style.display = 'block';
+
+		}
+		oDivs.onmouseout = function ()
+		{
+			oSpan.style.display = 'none';
+
+		}
+
+		oDivs.onmousemove = function (e)
+		{
+			var e = e || window.event;
+
+			var L =  e.clientX - oDivs.offsetLeft - oSpan.offsetLeft/2;
+			var Y =  e.clientY - oDivs.offsetTop - oSpan.offsetTop/2;
+
+			if(L < 0 )
+			{
+
+				L=0;
+			}else if( L > oDivs.offsetWidth - oSpan.offsetWidth)
+			{
+
+				L =  oDivs.offsetWidth - oSpan.offsetWidth;
+			}
+
+			if(Y < 0 )
+			{
+
+				Y=0;
+			}else if( Y > oDivs.offsetHeight - oSpan.offsetHeight)
+			{
+
+				Y =  oDivs.offsetHeight - oSpan.offsetHeight;
+			}
+ 
+			oSpan.style.left = L+ "px";
+			oSpan.style.top  = Y+ "px";
+
+			// 比例计算
+			var ProX = L/(oDivs.offsetWidth - oSpan.offsetWidth);
+			var ProY = Y/( oDivs.offsetHeight - oSpan.offsetHeight);
+
+			
+			Img2.style.left = -ProX * ( img2.offsetWidth - Div3.offsetWidth) + 'PX';
+			Img2.style.top =  -ProY * ( img2.offsetHeight - Div3.offsetHeight) + 'PX';
+
+		}
+	}
+</script>
+<body>
+	<div id="div1">
+		<img src="http://cdn.attach.w3cfuns.com/notes/pics/201610/31/190602dz6zzw1wi8fjz8nf.png" alt="" width= "244.5" height="200">
+		<span></span>
+		<div id="div2"></div>
+	</div>
+	<div id="div3">
+		<img src="http://cdn.attach.w3cfuns.com/notes/pics/201610/31/190602dz6zzw1wi8fjz8nf.png" alt="" id="img2">
+	</div>
+</body>
+</html>
+</body>
+</html>
